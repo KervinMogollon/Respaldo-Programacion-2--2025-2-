@@ -1,0 +1,10 @@
+nombre = input("Ingrese su nombre: ")
+apellido = input("Ingrese su apellido: ")
+edad = int(input("Ingrese su edad: "))
+diaNacimiento = int(input("Ingrese el día de su nacimiento: "))
+mesNacimiento = input("Ingrese el mes de su nacimiento(Nombre del mes): ")
+añoNacimiento = int(input("Ingrese el año de su nacimiento: "))
+
+print(f"\nMi nombre es: {nombre} {apellido}")
+print(f"Tengo una edad de: {edad} años")
+print(f"Nací el: {diaNacimiento} de {mesNacimiento} de {añoNacimiento}")

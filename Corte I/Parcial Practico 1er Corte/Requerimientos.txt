@@ -1,0 +1,8 @@
+Se dessea crear un sistema que permite almacenar en listas la información de venta de boletos de cine, 
+los cuales deben permitir almacenar la información del número de boleto, nombre del cliente, 
+cédula numero de boleto, precio de compra, cantidad de boletos y nombre de la pelicula. 
+El sistema debe permitir mostrar un menú con las opciones de Incluir, Buscar, modificar y 
+Eliminar Boletos." 
+Cada vez que se vaya a realizar la compra de un ticket se debe preguntar por el día de la semana, 
+puesto que los Lunes y Jueves hay descuentos. 
+Los días Lunes el descuento es del 50% y Los Jueves de 30$
