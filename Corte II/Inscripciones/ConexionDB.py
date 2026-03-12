@@ -20,18 +20,6 @@ class ConexionDB:
                 self.conn.close()
             except Exception:
                 pass
-            
-    def mostrarStudentsDB(self):
-        self.conectar()
-        cursor = self.conn.cursor() # type: ignore
-        try:
-            query = "SELECT * FROM estudiantes"
-            cursor.execute(query)
-            result = cursor.fetchall()
-            self.conn.commit() # type: ignore
-            return result
-        finally:
-            cursor.close()
 
     def _execute_fetchone(self, query, params=()):
         self.conectar()
@@ -52,40 +40,17 @@ class ConexionDB:
             self.conn.commit() # type: ignore
         finally:
             cur.close()
+            
+    def mostrarStudentsDB(self):
+        self.conectar()
+        cursor = self.conn.cursor() # type: ignore
+        try:
+            query = "SELECT * FROM estudiantes"
+            cursor.execute(query)
+            result = cursor.fetchall()
+            self.conn.commit() # type: ignore
+            return result
+        finally:
+            cursor.close()
         
-    def buscarStudentDB(self, ciStudent):
-        return self._execute_fetchone("SELECT * FROM estudiantes WHERE ci = %s", (ciStudent,))
-    
-    def reactivarStudent(self, ciStudent):
-        self._execute("UPDATE estudiantes SET status = %s WHERE ci = %s", ('A', ciStudent))
-    
-    def agregarStudentDB(self, student):
-        self._execute(
-            "INSERT INTO estudiantes VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
-            (student.StudCi, student.StudName, student.StudAddress, student.StudPhone, student.StudBirthDate, student.StudRegisteredDate, student.StudCareer, student.status)
-        )
-    
-    def modificarStudentDB(self, student):
-        self._execute(
-            "UPDATE estudiantes\
-                SET\
-                    nombre = %s,\
-                    direccion = %s,\
-                    nrotelefono = %s,\
-                    fechanacimiento = %s,\
-                    fechaInscripcion = %s,\
-                    carrera = %s,\
-                    status = %s\
-                WHERE ci = %s",
-            (student.StudName, 
-             student.StudAddress, 
-             student.StudPhone, 
-             student.StudBirthDate, 
-             student.StudRegisteredDate, 
-             student.StudCareer, 
-             student.status,
-             student.StudCi)
-        )
-        
-    def eliminarStudentDB(self, ciStudent):
-        self._execute("UPDATE estudiantes SET status = %s WHERE ci = %s", ('I', ciStudent))
+   

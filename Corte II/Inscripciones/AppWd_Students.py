@@ -5,6 +5,7 @@ from tkinter import Toplevel, BOTH, END
 import datetime as dt
 
 from ConexionDB import ConexionDB
+from ContexDbStudent import ContexDbStudent
 from Cl_Student import Student
 
 
@@ -180,7 +181,8 @@ class Wd_Students:
     
     def ExisteDB(self, ciStudent):
         conexion = ConexionDB()
-        result = conexion.buscarStudentDB(ciStudent)
+        Contex = ContexDbStudent()
+        result = Contex.buscarStudentDB(ciStudent)
         if result:
             conexion.cerrar()
             return True
@@ -196,8 +198,9 @@ class Wd_Students:
             
         
         conexion = ConexionDB()
+        Contex = ContexDbStudent()
         try:
-            resultado = conexion.buscarStudentDB(ciStudent)
+            resultado = Contex.buscarStudentDB(ciStudent)
         except Exception as e:
             messagebox.showerror("Error", f"Ocurrió un error al buscar el estudiante: {e}")
             return
@@ -227,7 +230,8 @@ class Wd_Students:
                             resultado = list(resultado)
                             resultado[3] = ""
                         conexion = ConexionDB()
-                        conexion.reactivarStudent(ciStudent)
+                        Contex = ContexDbStudent()
+                        Contex.reactivarStudent(ciStudent)
                         messagebox.showinfo("Información", "Estudiante reactivado exitosamente.")
                         self.limpiarEntrys()
                         self.entryCi.insert(0, ciStudent)
@@ -281,7 +285,8 @@ class Wd_Students:
         nuevoEstudiante.StudCareer = carreraS
         try:
             conexion = ConexionDB()
-            conexion.agregarStudentDB(nuevoEstudiante)
+            Contex = ContexDbStudent()
+            Contex.agregarStudentDB(nuevoEstudiante)
             conexion.cerrar()
             messagebox.showinfo("Información", "Estudiante agregado exitosamente.")
             self.limpiarEntrys()
@@ -324,7 +329,8 @@ class Wd_Students:
         
         try:
             conexion = ConexionDB()
-            conexion.modificarStudentDB(estudianteModificado)
+            Contex = ContexDbStudent()
+            Contex.modificarStudentDB(estudianteModificado)
             conexion.cerrar()
             messagebox.showinfo("Información", "Estudiante modificado exitosamente.")
             self.limpiarEntrys()
@@ -344,7 +350,8 @@ class Wd_Students:
         
         try:
             conexion = ConexionDB()
-            conexion.eliminarStudentDB(ciS)
+            Contex = ContexDbStudent()
+            Contex.eliminarStudentDB(ciS)
             conexion.cerrar()
             messagebox.showinfo("Información", "Estudiante eliminado exitosamente.")
             self.limpiarEntrys()
