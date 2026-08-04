@@ -34,7 +34,7 @@ while respuesta == "si":
         if numero2 != 0:
             resultado = numero1 / numero2
         else:
-            print("División por cero no permitida.")
+            print("División entre cero no permitida.")
             continue
     elif operacion == "**":
         resultado = numero1 ** numero2

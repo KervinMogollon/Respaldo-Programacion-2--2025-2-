@@ -7,14 +7,14 @@ class Wd_Menu:
         self.window.title("Menú de Inscripciones")
         self.window.geometry("300x200")
         
-        # Botón para abrir la ventana de estudiantes
+            # Botón para abrir la ventana de estudiantes
         self.buttonEstudiantes = tk.Button(self.window, text='Gestión de Estudiantes', command=self.abrirEstudiantes)
         self.buttonEstudiantes.place(x=70, y=50)
         
         # Botón para salir de la aplicación
         self.buttonSalir = tk.Button(self.window, text='Salir', command=self.window.quit)
         self.buttonSalir.place(x=120, y=100)
-        
+               
         self.window.mainloop()
     
     def abrirEstudiantes(self):
